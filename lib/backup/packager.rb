@@ -43,7 +43,7 @@ module Backup
         # or the Splitter (if no Encryptor), or through `cat` into the final
         # output file if neither are configured.
         @pipeline << "#{ utility(:tar) } -cf - " +
-            "-C '#{ Config.tmp_path }' '#{ @package.trigger }'"
+            "-C '#{ Config.tmp_path }' --warning=no-file-changed --warning=no-file-removed '#{ @package.trigger }'"
 
         ##
         # If an Encryptor was configured, it will be called first
